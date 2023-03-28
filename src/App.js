@@ -2,7 +2,11 @@ import Header from "./components/Header.jsx";
 import Categories from "./components/Categories.jsx";
 import Sort from "./components/Sort.jsx";
 import PizzaBlock from "./components/PizzaBlock.jsx";
+import pizzas from "./assets/pizza.json";
+import { v4 as uuidv4 } from "uuid";
 import "./scss/app.scss";
+
+console.log(pizzas);
 
 function App() {
   return (
@@ -16,10 +20,20 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
-            <PizzaBlock />
+            {pizzas.map((pizza) => {
+              return (
+                // <PizzaBlock
+                //   key={pizza.id}
+                //   title={pizza.title}
+                //   price={pizza.price}
+                //   imageUrl={pizza.imageUrl}
+                //   types={pizza.types}
+                //   sizes={pizza.sizes}
+                // />
+                <PizzaBlock key={uuidv4()} {...pizza} />
+              );
+          })}
+           
             
           </div>
         </div>

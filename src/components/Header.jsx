@@ -7,7 +7,7 @@ export default function Header() {
         <div className="header__logo">
           <img width="38" src={logoSvg} alt="Pizza logo" />
           <div>
-            <h1>React Pizza</h1>
+            <h1>Pizza to Go</h1>
             <p>самая вкусная пицца во вселенной</p>
           </div>
         </div>
