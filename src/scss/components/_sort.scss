@@ -24,6 +24,7 @@
   &__popup {
     position: absolute;
     right: 0;
+    opacity: 0;
     margin-top: 15px;
     background: #ffffff;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
@@ -31,6 +32,10 @@
     overflow: hidden;
     padding: 10px 0;
     width: 160px;
+
+    &.active{
+      opacity: 1;
+    }
 
     ul {
       overflow: hidden;

@@ -8,12 +8,12 @@ export default function Header() {
           <img width="38" src={logoSvg} alt="Pizza logo" />
           <div>
             <h1>Pizza to Go</h1>
-            <p>самая вкусная пицца во вселенной</p>
+            <p>Минимум ожидания, максимум еды.</p>
           </div>
         </div>
         <div className="header__cart">
           <a href="/cart.html" className="button button--cart">
-            <span>520 ₽</span>
+            <span>520 грн</span>
             <div className="button__delimiter"></div>
             <svg
               width="18"

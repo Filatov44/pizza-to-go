@@ -1,4 +1,19 @@
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 export default function Sort() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(0);
+
+  const list = ["популярности", "цене", "алфавиту"];
+
+  const currentListItem = list[selected];
+
+  const onSelectedSort = (i) => {
+    setSelected(i);
+    setOpen(false);
+  };
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -15,14 +30,24 @@ export default function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>популярности</span>
+        <span onClick={() => setOpen(!open)}>{currentListItem}</span>
       </div>
-      <div className="sort__popup">
-        <ul>
-          <li className="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
+      <div className={open ? "active sort__popup" : "sort__popup"}>
+        {open && (
+          <ul>
+            {list.map((item, i) => {
+              return (
+                <li
+                  key={uuidv4()}
+                  onClick={() => onSelectedSort(i)}
+                  className={selected === i ? "active" : ""}
+                >
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </div>
   );

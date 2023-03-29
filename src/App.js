@@ -6,7 +6,6 @@ import pizzas from "./assets/pizza.json";
 import { v4 as uuidv4 } from "uuid";
 import "./scss/app.scss";
 
-console.log(pizzas);
 
 function App() {
   return (
