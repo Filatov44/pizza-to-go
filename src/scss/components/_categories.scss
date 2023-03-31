@@ -1,8 +1,24 @@
-@import '../variables';
+@import "../variables";
 
 .categories {
   ul {
     display: flex;
+
+    @media (max-width: 1300px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
+
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
 
     li {
       background-color: #f9f9f9;
@@ -10,9 +26,14 @@
       border-radius: 30px;
       margin-right: 10px;
       font-weight: bold;
+      text-align: center;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
       @include noselect();
+
+      @media (max-width: 500px) {
+        padding: 8px 15px;
+      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);
