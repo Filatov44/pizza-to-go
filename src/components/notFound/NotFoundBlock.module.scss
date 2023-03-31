@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    padding: 10px;
+
+    .info {
+        font-size: 120px;
+    }
+
+    .text {
+        font-size: 32px;
+        color: red;
+        margin-bottom: 25px;
+    }
+
+    .link {
+        font-size: 24px;
+        color: #000000;
+        border-radius: 20px;
+        padding: 10px;
+
+        &:hover,
+        &:focus {
+            background-color: #FE5F1E;
+        }
+    }
+};
