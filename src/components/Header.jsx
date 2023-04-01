@@ -9,7 +9,7 @@ export default function Header() {
         <Link to={"/"}>
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
-            <div>
+            <div className="header__text">
               <h1>Pizza to Go</h1>
               <p>Минимум ожидания, максимум еды.</p>
             </div>
@@ -48,7 +48,7 @@ export default function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>3</span>
+            <span>30</span>
           </Link>
         </div>
       </div>

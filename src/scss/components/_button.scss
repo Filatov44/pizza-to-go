@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .button {
   display: inline-block;
@@ -8,7 +8,8 @@
   min-width: 100px;
   text-align: center;
   cursor: pointer;
-  transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+  transition: background-color $duration ease-in-out,
+    border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
 
@@ -135,6 +136,10 @@
     line-height: 23px;
     padding: 12px 25px;
 
+    @media (min-width: 501px) and (max-width: 655px) {
+      padding: 10px 15px;
+    }
+
     svg {
       margin-right: 8px;
       margin-bottom: 1px;
@@ -143,6 +148,10 @@
     span {
       font-weight: 600;
       font-size: 16px;
+
+      @media (min-width: 501px) and (max-width: 655px) {
+        font-size: 14px;
+      }
     }
   }
 }

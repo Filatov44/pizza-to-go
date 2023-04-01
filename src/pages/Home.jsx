@@ -25,22 +25,25 @@ export default function Home() {
            setPizzas(items);
            setIsLoading(false);
          });
+       window.scrollTo(0, 0);
      }, []);
 
 
     return (
       <>
-        <div className="content__top">
-          <Categories />
-          <Sort />
-        </div>
-        <h2 className="content__title">Все пиццы</h2>
-        <div className="content__items">
-          {isLoading
-            ? fakeArray
-            : pizzas.map((pizza) => {
-                return <PizzaBlock key={uuidv4()} {...pizza} />;
-              })}
+        <div className="container">
+          <div className="content__top">
+            <Categories />
+            <Sort />
+          </div>
+          <h2 className="content__title">Все пиццы</h2>
+          <div className="content__items">
+            {isLoading
+              ? fakeArray
+              : pizzas.map((pizza) => {
+                  return <PizzaBlock key={uuidv4()} {...pizza} />;
+                })}
+          </div>
         </div>
       </>
     );
