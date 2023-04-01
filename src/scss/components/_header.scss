@@ -18,6 +18,18 @@
     }
   }
 
+  .link {
+    &:hover,
+      :focus {
+        scale: 1.05;
+         h1 {
+          color: #fe5f1e;
+        // scale: 1.05;
+      }
+      }
+     
+  }
+
   &__logo {
     display: flex;
 
@@ -35,6 +47,12 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      // &:hover,
+      // :focus {
+      //   color: #fe5f1e;
+      //   scale: 1.05;
+      // }
     }
 
     p {
