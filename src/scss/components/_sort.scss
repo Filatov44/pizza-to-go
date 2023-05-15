@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .sort {
   position: relative;
@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
 
-    svg {
+    &-svg {
       margin-right: 8px;
     }
 
@@ -33,7 +33,7 @@
     padding: 10px 0;
     width: 160px;
 
-    &.active{
+    &.active {
       opacity: 1;
     }
 
@@ -53,6 +53,37 @@
           color: $orange;
         }
       }
+    }
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-left: 5px;
+
+    &-item {
+      display: flex;
+      margin: 0 0 5px 0;
+      text-align: center;
+      align-items: center;
+      padding: 2px;
+      border-radius: 5px;
+      border: 1px solid #fe5f1e;
+      cursor: pointer;
+      background-color: white;
+      color: #fe5f1e;
+
+      &:hover {
+        background-color: #fe5f1e;
+        color: white;
+      }
+    }
+    &-item.active {
+      background-color: #fe5f1e;
+      color: white;
+
+      
     }
   }
 }

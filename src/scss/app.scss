@@ -79,9 +79,13 @@ body {
     align-items: center;
 
     .categories {
-      margin-right: 25px;
+      margin-right: 75px;
 
-      @media (min-width: 1301px) and (max-width: 1325px) {
+      @media (min-width: 1325px) and (max-width: 1399px) {
+        margin-right: 25px;
+      }
+
+      @media (min-width: 1301px) and (max-width: 1324px) {
         margin-right: 5px;
       }
     }

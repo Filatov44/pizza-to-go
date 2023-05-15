@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
-export default function Sort() {
+export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(0);
+  // const [selected, setSelected] = useState(0);
 
-  const list = ["популярности", "цене", "алфавиту"];
+  const list = [
+    { name: "популярности", sortProperty: "rating" },
+    { name: "цене", sortProperty: "price" },
+    { name: "алфавиту", sortProperty: "title" },
+  ];
 
-  const currentListItem = list[selected];
+  // const currentListItem = list[value];
 
   const onSelectedSort = (i) => {
-    setSelected(i);
+    onChangeSort(i);
     setOpen(false);
   };
 
@@ -18,6 +23,7 @@ export default function Sort() {
     <div className="sort">
       <div className="sort__label">
         <svg
+          className="sort__label-svg"
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -30,19 +36,41 @@ export default function Sort() {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{currentListItem}</span>
+        <span onClick={() => setOpen(!open)}>{value.name}</span>
+        <div className="sort__button">
+          <button
+            type="button"
+            className={
+              order === "asc" ? "sort__button-item active" : "sort__button-item"
+            }
+            onClick={() => onChangeOrder("asc")}
+          >
+            <BsArrowUp className="sort__button-svg" />
+          </button>
+          <button
+            type="button"
+            className={
+              order === "desc" ? "sort__button-item active" : "sort__button-item"
+            }
+            onClick={() => onChangeOrder("desc")}
+          >
+            <BsArrowDown />
+          </button>
+        </div>
       </div>
       <div className={open ? "active sort__popup" : "sort__popup"}>
         {open && (
           <ul>
-            {list.map((item, i) => {
+            {list.map((obj, i) => {
               return (
                 <li
                   key={uuidv4()}
-                  onClick={() => onSelectedSort(i)}
-                  className={selected === i ? "active" : ""}
+                  onClick={() => onSelectedSort(obj)}
+                  className={
+                    value.sortProperty === obj.sortProperty ? "active" : ""
+                  }
                 >
-                  {item}
+                  {obj.name}
                 </li>
               );
             })}
