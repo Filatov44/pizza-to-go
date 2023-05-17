@@ -1,8 +1,6 @@
 // import { useState } from "react";
 
-export default function Categories({value, onChangeCategory}) {
-  // const [activeCategory, setActiveCategory] = useState(0);
-
+export default function Categories({ value, onChangeCategory }) {
   const categories = [
     "Все",
     "Мясные",
@@ -11,10 +9,6 @@ export default function Categories({value, onChangeCategory}) {
     "Острые",
     "Закрытые",
   ];
-
-  // const onChangeCategory = (index) => {
-  //   setActiveCategory(index);
-  // };
 
   return (
     <div className="categories">

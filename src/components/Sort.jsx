@@ -4,15 +4,12 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
 export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
-  // const [selected, setSelected] = useState(0);
 
   const list = [
     { name: "популярности", sortProperty: "rating" },
     { name: "цене", sortProperty: "price" },
     { name: "алфавиту", sortProperty: "title" },
   ];
-
-  // const currentListItem = list[value];
 
   const onSelectedSort = (i) => {
     onChangeSort(i);
@@ -50,7 +47,9 @@ export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
           <button
             type="button"
             className={
-              order === "desc" ? "sort__button-item active" : "sort__button-item"
+              order === "desc"
+                ? "sort__button-item active"
+                : "sort__button-item"
             }
             onClick={() => onChangeOrder("desc")}
           >
