@@ -7,18 +7,25 @@ import SkeletonPizzaBlock from "../components/skeleton/SkeletonPizzaBlock.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { SearchContext } from "../App";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategoryId } from "../redux/slices/filterSlice";
 
 export default function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState({
     name: "популярности",
     sortProperty: "rating",
   });
   const [order, setOrder] = useState("asc");
   const { searchValue } = React.useContext(SearchContext);
-  console.log(searchValue);
+
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const dispatch = useDispatch();
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   const fakeArray = [...new Array(6)].map(() => (
     <SkeletonPizzaBlock key={uuidv4()} />
@@ -46,10 +53,7 @@ export default function Home() {
     <>
       <div className="container">
         <div className="content__top">
-          <Categories
-            value={categoryId}
-            onChangeCategory={(i) => setCategoryId(i)}
-          />
+          <Categories value={categoryId} onChangeCategory={onChangeCategory} />
           <Sort
             value={sortType}
             onChangeSort={(i) => setSortType(i)}

@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import  sortList  from "../assets/sortList"
 
 export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
 
-  const list = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" },
-  ];
+  const list = sortList;
+ 
+
+  // const list = [
+  //   { name: "популярности", sortProperty: "rating" },
+  //   { name: "цене", sortProperty: "price" },
+  //   { name: "алфавиту", sortProperty: "title" },
+  // ];
 
   const onSelectedSort = (i) => {
     onChangeSort(i);
