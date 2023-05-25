@@ -13,15 +13,13 @@ import { setCategoryId } from "../redux/slices/filterSlice";
 export default function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortType, setSortType] = useState({
-    name: "популярности",
-    sortProperty: "rating",
-  });
+
   const [order, setOrder] = useState("asc");
   const { searchValue } = React.useContext(SearchContext);
 
-  const categoryId = useSelector((state) => state.filter.categoryId);
   const dispatch = useDispatch();
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const sortProperty = useSelector((state) => state.filter.sort.sortProperty);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -37,7 +35,7 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
     fetch(
-      `https://6426c3f6556bad2a5b576f0b.mockapi.io/pizzas?${isCategory}&sortBy=${sortType.sortProperty}&order=${order}&${isSearch}`
+      `https://6426c3f6556bad2a5b576f0b.mockapi.io/pizzas?${isCategory}&sortBy=${sortProperty}&order=${order}&${isSearch}`
     )
       .then((res) => {
         return res.json();
@@ -47,19 +45,14 @@ export default function Home() {
         setIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [sortType, isCategory, order, isSearch]);
+  }, [sortProperty, isCategory, order, isSearch]);
 
   return (
     <>
       <div className="container">
         <div className="content__top">
           <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-          <Sort
-            value={sortType}
-            onChangeSort={(i) => setSortType(i)}
-            order={order}
-            onChangeOrder={(value) => setOrder(value)}
-          />
+          <Sort order={order} onChangeOrder={(value) => setOrder(value)} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">

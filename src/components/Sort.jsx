@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import  sortList  from "../assets/sortList"
+import sortList from "../assets/sortList";
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../redux/slices/filterSlice";
 
-export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
+export default function Sort({ onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.filter.sort);
+
 
   const list = sortList;
  
@@ -15,8 +20,9 @@ export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
   //   { name: "алфавиту", sortProperty: "title" },
   // ];
 
-  const onSelectedSort = (i) => {
-    onChangeSort(i);
+  const onSelectedSort = (obj) => {
+    dispatch(setSort(obj))
+    // onChangeSort(i);
     setOpen(false);
   };
 
@@ -37,7 +43,7 @@ export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{value.name}</span>
+        <span onClick={() => setOpen(!open)}>{sort.name}</span>
         <div className="sort__button">
           <button
             type="button"
@@ -70,7 +76,7 @@ export default function Sort({ value, onChangeSort, onChangeOrder, order }) {
                   key={uuidv4()}
                   onClick={() => onSelectedSort(obj)}
                   className={
-                    value.sortProperty === obj.sortProperty ? "active" : ""
+                    sort.sortProperty === obj.sortProperty ? "active" : ""
                   }
                 >
                   {obj.name}
