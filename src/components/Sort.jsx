@@ -10,19 +10,10 @@ export default function Sort({ onChangeOrder, order }) {
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.filter.sort);
 
-
   const list = sortList;
  
-
-  // const list = [
-  //   { name: "популярности", sortProperty: "rating" },
-  //   { name: "цене", sortProperty: "price" },
-  //   { name: "алфавиту", sortProperty: "title" },
-  // ];
-
   const onSelectedSort = (obj) => {
     dispatch(setSort(obj))
-    // onChangeSort(i);
     setOpen(false);
   };
 
