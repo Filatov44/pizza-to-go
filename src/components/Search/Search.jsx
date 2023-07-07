@@ -24,7 +24,6 @@ export default function Search() {
 
   const updateSearchValue = useCallback(
     debounce((str) => {
-      console.log(str);
       setSearchValue(str);
     }, 500),
     []
