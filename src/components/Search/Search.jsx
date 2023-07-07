@@ -1,41 +1,47 @@
-import React, { useContext, useRef } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import styles from "../Search/Search.module.scss";
 
+import debounce from "lodash.debounce";
 import { GoSearch } from "react-icons/go";
 import { MdClose } from "react-icons/md";
 import { SearchContext } from "../../App";
 
 export default function Search() {
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const [value, setValue] = useState("");
+  const { setSearchValue } = useContext(SearchContext);
   const inputRef = useRef();
-  console.log(searchValue);
-
-  const changeHandler = (event) => {
-    setSearchValue(event.target.value);
-  };
 
   const resetInputSearch = () => {
     setSearchValue("");
-    inputRef.current.focus()
-  }
+    setValue("");
+    inputRef.current.focus();
+  };
+
+  const onChangeInput = (event) => {
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
+
+  const updateSearchValue = useCallback(
+    debounce((str) => {
+      console.log(str);
+      setSearchValue(str);
+    }, 500),
+    []
+  );
 
   return (
     <div className={styles.input__container}>
       <GoSearch className={styles.input__icon} />
       <input
         ref={inputRef}
-        value={searchValue}
-        onChange={changeHandler}
+        value={value}
+        onChange={onChangeInput}
         className={styles.input}
         placeholder="Поиск пиццы..."
       />
-      {searchValue && (
-        <MdClose
-          onClick={
-           resetInputSearch
-          }
-          className={styles.input__reset}
-        />
+      {value && (
+        <MdClose onClick={resetInputSearch} className={styles.input__reset} />
       )}
     </div>
   );
