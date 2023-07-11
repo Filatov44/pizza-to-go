@@ -7,20 +7,21 @@ import PizzaBlock from "../components/PizzaBlock.jsx";
 import SkeletonPizzaBlock from "../components/skeleton/SkeletonPizzaBlock.jsx";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
-import { SearchContext } from "../App";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId } from "../redux/slices/filterSlice";
+// import { SearchContext } from "../App";
 
 export default function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const [order, setOrder] = useState("asc");
-  const { searchValue } = React.useContext(SearchContext);
+  // const { searchValue } = React.useContext(SearchContext);
 
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortProperty = useSelector((state) => state.filter.sort.sortProperty);
+  const searchValue = useSelector((state) => state.filter.searchValue);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
