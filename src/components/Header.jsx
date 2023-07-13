@@ -3,11 +3,20 @@ import { Link } from "react-router-dom";
 import logoSvg from "../img/pizza-logo.svg";
 import Search from "./Search/Search";
 
+import { useDispatch } from "react-redux";
+import { resetFilters } from "../redux/slices/filterSlice";
+
 export default function Header() {
+  const dispatch = useDispatch();
+
+  const onHome = () => {
+    dispatch(resetFilters());
+  };
+
   return (
     <div className="header">
       <div className="container">
-        <Link className="link" to={"/"}>
+        <Link className="link" to={"/"} onClick={() => onHome()}>
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div className="header__text">
@@ -16,7 +25,7 @@ export default function Header() {
             </div>
           </div>
         </Link>
-        <Search/>
+        <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 грн</span>
