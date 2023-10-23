@@ -14,13 +14,13 @@ export default function Header() {
   };
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="container">
         <Link className="link" to={"/"} onClick={() => onHome()}>
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div className="header__text">
-              <h1>Pizza to Go</h1>
+              <h1 className="header__name">Pizza to Go</h1>
               <p>Минимум ожидания, максимум еды.</p>
             </div>
           </div>
@@ -63,6 +63,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

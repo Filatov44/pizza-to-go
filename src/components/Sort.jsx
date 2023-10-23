@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import sortList from "../assets/sortList";
@@ -9,16 +9,31 @@ export default function Sort({ onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.filter.sort);
+  const sortRef = useRef();
 
   const list = sortList;
- 
+
   const onSelectedSort = (obj) => {
-    dispatch(setSort(obj))
+    dispatch(setSort(obj));
     setOpen(false);
   };
 
+  useEffect(() => {
+    const clickOutsideSort = (event) => {
+      if (!sortRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", clickOutsideSort);
+
+    return () => {
+      document.body.removeEventListener("click", clickOutsideSort);
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           className="sort__label-svg"

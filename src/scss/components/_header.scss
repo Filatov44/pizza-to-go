@@ -42,21 +42,18 @@
     }
 
     h1 {
-      color: #181818;
-      font-size: 24px;
-      letter-spacing: 1%;
-      text-transform: uppercase;
-      font-weight: 800;
-
-      // &:hover,
-      // :focus {
-      //   color: #fe5f1e;
-      //   scale: 1.05;
-      // }
+      // color: #181818;
+      // font-size: 24px;
+      // letter-spacing: 1%;
+      // text-transform: uppercase;
+      // font-weight: 800;
     }
 
     p {
       color: #7b7b7b;
+    //    width: 100%;
+    // overflow: hidden;
+    // animation: runtext 4s steps(60, end);
     }
   }
 
@@ -65,4 +62,19 @@
       text-align: center;
     }
   }
+
+  &__name {
+    color: #181818;
+    font-size: 24px;
+    letter-spacing: 1%;
+    text-transform: uppercase;
+    font-weight: 800;
+    // width: 100%;
+    // overflow: hidden;
+    // animation: runtext 4s steps(60, end);
+  }
 }
+
+// @keyframes runtext {
+//   from {width: 0;}
+// }
