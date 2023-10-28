@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logoSvg from "../img/pizza-logo.svg";
 import Search from "./Search/Search";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetFilters } from "../redux/slices/filterSlice";
 
 export default function Header() {
@@ -12,6 +12,8 @@ export default function Header() {
   const onHome = () => {
     dispatch(resetFilters());
   };
+
+  const {items, totalPrice} = useSelector(state => state.cart)
 
   return (
     <header className="header">
@@ -28,7 +30,7 @@ export default function Header() {
         <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
-            <span>520 грн</span>
+            <span>{totalPrice} грн</span>
             <div className="button__delimiter"></div>
             <svg
               width="18"
@@ -59,7 +61,7 @@ export default function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>30</span>
+            <span>{items.length}</span>
           </Link>
         </div>
       </div>
