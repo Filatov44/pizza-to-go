@@ -8,12 +8,15 @@ import { resetFilters } from "../redux/slices/filterSlice";
 
 export default function Header() {
   const dispatch = useDispatch();
+  const { items, totalPrice } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
   const onHome = () => {
     dispatch(resetFilters());
   };
 
-  const {items, totalPrice} = useSelector(state => state.cart)
+  console.log(totalPrice);
 
   return (
     <header className="header">
@@ -61,7 +64,7 @@ export default function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>{items.length}</span>
+            <span>{totalCount}</span>
           </Link>
         </div>
       </div>

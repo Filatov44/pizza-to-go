@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CartItem from "../components/cartItem/CartItem";
 
 export default function Cart() {
+
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.items);
+
   return (
     <div className="container container--cart">
       <div className="cart">
@@ -80,7 +86,11 @@ export default function Cart() {
           </div>
         </div>
         <div className="content__items-cart">
-          <div className="cart__item">
+          {items.map((item) => (
+            <CartItem key={item.uId}{...item} />
+          ))}
+          {/* <CartItem /> */}
+          {/* <div className="cart__item">
             <div className="cart__item-img">
               <img
                 className="pizza-block__image"
@@ -379,7 +389,7 @@ export default function Cart() {
                 </svg>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="cart__bottom">
           <div className="cart__bottom-details">
