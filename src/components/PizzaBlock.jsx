@@ -16,7 +16,8 @@ export default function PizzaBlock(props) {
       (obj) =>
         obj.id === props.id &&
         obj.type === typeName[typeActive] &&
-        obj.size === activeSize
+        obj.size === props.sizes[activeSize]
+      // obj.size === activeSize
     )
   );
 
@@ -29,8 +30,8 @@ export default function PizzaBlock(props) {
       price: props.price,
       imageUrl: props.imageUrl,
       type: typeName[typeActive],
-      size: activeSize,
-      // size: props.sizes[activeSize],
+      size: props.sizes[activeSize],
+      // size: activeSize,
     };
     dispatch(addItem(item));
   };
