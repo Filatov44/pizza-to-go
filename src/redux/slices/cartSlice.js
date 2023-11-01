@@ -43,30 +43,40 @@ const cartSlice = createSlice({
     // },
     minusItem(state, action) {
       const findItem = state.items.find((obj) => {
-        return obj.id === action.payload.uId;
+        return obj.uId === action.payload.uId;
       });
       findItem && findItem.count--;
       state.totalPrice -= findItem.price;
+
+      // видалення піцци з масиву піцц якщо count < 1
+      if (findItem.count < 1) {
+        const index = state.items.findIndex(
+          (obj) => obj.uId === action.payload.uId
+        );
+        if (index !== -1) {
+          state.items.splice(index, 1);
+        }
+      }
     },
 
-    removeItem(state, action) {
+    removeItems(state, action) {
       const findItem = state.items.find((obj) => {
-        return obj.id === action.payload.uId;
+        return obj.uId === action.payload.uId;
       });
       state.totalPrice -= findItem.price * findItem.count;
       state.items = state.items.filter((obj) => {
-        return (
-          obj.id !== action.payload.uId 
-        );
+        return obj.uId !== action.payload.uId;
       });
     },
 
     clearItems(state) {
       state.items = [];
+      state.totalPrice = 0;
     },
   },
 });
 
-export const { addItem,minusItem, removeItems, clearItems } = cartSlice.actions;
+export const { addItem, minusItem, removeItems, clearItems } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

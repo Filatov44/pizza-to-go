@@ -3,28 +3,24 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../redux/slices/cartSlice";
 
- const typeName = ["тонкое", "традиционное"];
+const typeName = ["тонкое", "традиционное"];
 
 export default function PizzaBlock(props) {
- 
   const dispatch = useDispatch();
-  
+
   const [typeActive, setTypeActive] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-   const cartItem = useSelector((state) =>
-     state.cart.items.find(
-       (obj) =>
-         obj.id === props.id &&
-         obj.type === typeName[typeActive] &&
-         obj.size === activeSize
-     )
+  const cartItem = useSelector((state) =>
+    state.cart.items.find(
+      (obj) =>
+        obj.id === props.id &&
+        obj.type === typeName[typeActive] &&
+        obj.size === activeSize
+    )
   );
-  
-  console.log(cartItem);
 
   const addedCount = cartItem ? cartItem.count : 0;
- 
 
   const onClickAdd = () => {
     const item = {
@@ -33,10 +29,11 @@ export default function PizzaBlock(props) {
       price: props.price,
       imageUrl: props.imageUrl,
       type: typeName[typeActive],
-      size: activeSize
+      size: activeSize,
+      // size: props.sizes[activeSize],
     };
-    dispatch(addItem(item))
-  }
+    dispatch(addItem(item));
+  };
 
   return (
     <div className="pizza-block-wrapper">

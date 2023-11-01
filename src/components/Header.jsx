@@ -16,8 +16,6 @@ export default function Header() {
     dispatch(resetFilters());
   };
 
-  console.log(totalPrice);
-
   return (
     <header className="header">
       <div className="container">

@@ -1,6 +1,38 @@
-import React from 'react'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem, minusItem, removeItems } from "../../redux/slices/cartSlice";
 
- const CartItem = ({id, uId, title, type, size, price, count, imageUrl}) => {
+const CartItem = ({ id, uId, title, type, size, price, count, imageUrl }) => {
+  const dispatch = useDispatch();
+
+  const addPizza = () => {
+    dispatch(
+      addItem({
+        id,
+        type,
+        size,
+      })
+    );
+  };
+
+  const minusPizza = () => {
+    dispatch(
+      minusItem({
+        uId,
+      })
+    );
+  };
+
+  const removePizza = () => {
+    if (window.confirm("Ви дійсно бажаєте видалити ?")) {
+      dispatch(
+        removeItems({
+          uId,
+        })
+      );
+    }
+  };
+
   return (
     <div className="cart__item">
       <div className="cart__item-img">
@@ -8,10 +40,15 @@ import React from 'react'
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>
-        <p>{type}, {size} см.</p>
+        <p>
+          {type}, {size} см.
+        </p>
       </div>
       <div className="cart__item-count">
-        <div className="button button--outline button--circle cart__item-count-minus">
+        <button
+          onClick={minusPizza}
+          className="button button--outline button--circle cart__item-count-minus"
+        >
           <svg
             width="10"
             height="10"
@@ -28,9 +65,12 @@ import React from 'react'
               fill="#EB5A1E"
             ></path>
           </svg>
-        </div>
+        </button>
         <b>{count}</b>
-        <div className="button button--outline button--circle cart__item-count-plus">
+        <button
+          onClick={addPizza}
+          className="button button--outline button--circle cart__item-count-plus"
+        >
           <svg
             width="10"
             height="10"
@@ -47,13 +87,16 @@ import React from 'react'
               fill="#EB5A1E"
             ></path>
           </svg>
-        </div>
+        </button>
       </div>
       <div className="cart__item-price">
         <b>{price * count}</b>
       </div>
       <div className="cart__item-remove">
-        <div className="button button--outline button--circle">
+        <button
+          onClick={removePizza}
+          className="button button--outline button--circle"
+        >
           <svg
             width="10"
             height="10"
@@ -70,10 +113,10 @@ import React from 'react'
               fill="#EB5A1E"
             ></path>
           </svg>
-        </div>
+        </button>
       </div>
     </div>
   );
-}
+};
 
 export default CartItem;
