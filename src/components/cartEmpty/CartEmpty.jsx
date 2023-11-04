@@ -5,9 +5,9 @@ import cartEmptyImg from "../../img/empty-cart.png";
 const CartEmpty = () => {
   return (
     <>
-      <div class="cart cart--empty">
+      <div className="cart cart--empty">
         <h2>
-          Корзина порожня <icon>😕</icon>
+          Корзина порожня <p>😕</p>
         </h2>
         <p>
           Найімовірніше, ви не замовляли ще піцу.
@@ -15,7 +15,7 @@ const CartEmpty = () => {
           Щоб замовити піцу, треба перейти на головну сторінку.
         </p>
         <img src={cartEmptyImg} alt="Empty cart" />
-        <Link to="/" class="button button--black">
+        <Link to="/" className="button button--black">
           <span>Повернутися на головну</span>
         </Link>
       </div>

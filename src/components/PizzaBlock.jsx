@@ -23,18 +23,24 @@ export default function PizzaBlock(props) {
 
   const addedCount = cartItem ? cartItem.count : 0;
 
+  const pizzaPrice = Number(props.price[activeSize]);
+  
   const onClickAdd = () => {
+
     const item = {
       id: props.id,
       title: props.title,
-      price: props.price,
+      price: pizzaPrice,
+      // price: props.price,
       imageUrl: props.imageUrl,
       type: typeName[typeActive],
       size: props.sizes[activeSize],
-      // size: activeSize,
+      index: activeSize,
     };
     dispatch(addItem(item));
   };
+
+ 
 
   return (
     <div className="pizza-block-wrapper">
@@ -70,7 +76,7 @@ export default function PizzaBlock(props) {
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price">от {props.price} грн</div>
+          <div className="pizza-block__price"> {props.price[activeSize]} грн</div>
           <button
             onClick={onClickAdd}
             className="button button--outline button--add"
