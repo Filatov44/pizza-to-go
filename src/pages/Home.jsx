@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 
-import axios from "axios";
 import qs from "qs";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort.jsx";
@@ -16,24 +15,22 @@ import {
   setMounted,
 } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
-// import { SearchContext } from "../App";
+import { fetchPizzasItems } from "../redux/slices/pizzaSlice.js";
 
 export default function Home() {
-  const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
   const [order, setOrder] = useState("asc");
-  // const { searchValue } = React.useContext(SearchContext);
 
   const refSearch = useRef(false);
 
-  // const isMounted = useRef(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortProperty = useSelector((state) => state.filter.sort.sortProperty);
   const searchValue = useSelector((state) => state.filter.searchValue);
   const isMounted = useSelector((state) => state.filter.isMounted);
+
+  const pizzas = useSelector((state) => state.pizza.items);
+  const status = useSelector((state) => state.pizza.status);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -46,16 +43,15 @@ export default function Home() {
   const isCategory = categoryId > 0 ? `category=${categoryId}` : "";
   const isSearch = searchValue ? `search=${searchValue}` : "";
 
-  const getPizzas = (isCategory, sortProperty, order, isSearch) => {
-    setIsLoading(true);
-    axios
-      .get(
-        `https://6426c3f6556bad2a5b576f0b.mockapi.io/pizzas?${isCategory}&sortBy=${sortProperty}&order=${order}&${isSearch}`
-      )
-      .then((res) => {
-        setPizzas(res.data);
-        setIsLoading(false);
-      });
+  const getPizzas = async () => {
+    dispatch(
+      fetchPizzasItems({
+        isCategory,
+        sortProperty,
+        order,
+        isSearch,
+      })
+    );
   };
 
   // Проверяем есть ли у нас в url параметры через window.location.search
@@ -81,14 +77,11 @@ export default function Home() {
       ) {
         refSearch.current = true;
       }
-
-      // refSearch.current = true;
     }
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsLoading(true);
 
     if (!refSearch.current) {
       getPizzas(isCategory, sortProperty, order, isSearch);
@@ -107,7 +100,7 @@ export default function Home() {
       });
       navigate(`?${queryString}`);
     }
-    // isMounted.current = true;
+
     dispatch(setMounted(true));
   }, [sortProperty, categoryId, order]);
 
@@ -119,13 +112,19 @@ export default function Home() {
           <Sort order={order} onChangeOrder={(value) => setOrder(value)} />
         </div>
         <h2 className="content__title">Все пиццы</h2>
-        <div className="content__items">
-          {isLoading
-            ? fakeArray
-            : pizzas.map((pizza) => {
-                return <PizzaBlock key={uuidv4()} {...pizza} />;
-              })}
-        </div>
+        {status === "error" ? (
+          <div>
+            <h2>Нажаль виникла помилка.</h2>
+          </div>
+        ) : (
+          <div className="content__items">
+            {status === "loading"
+              ? fakeArray
+              : pizzas.map((pizza) => {
+                  return <PizzaBlock key={uuidv4()} {...pizza} />;
+                })}
+          </div>
+        )}
       </div>
     </>
   );
