@@ -17,21 +17,18 @@ export default function PizzaBlock(props) {
         obj.id === props.id &&
         obj.type === typeName[typeActive] &&
         obj.size === props.sizes[activeSize]
-      // obj.size === activeSize
     )
   );
 
   const addedCount = cartItem ? cartItem.count : 0;
 
   const pizzaPrice = Number(props.price[activeSize]);
-  
-  const onClickAdd = () => {
 
+  const onClickAdd = () => {
     const item = {
       id: props.id,
       title: props.title,
       price: pizzaPrice,
-      // price: props.price,
       imageUrl: props.imageUrl,
       type: typeName[typeActive],
       size: props.sizes[activeSize],
@@ -39,8 +36,6 @@ export default function PizzaBlock(props) {
     };
     dispatch(addItem(item));
   };
-
- 
 
   return (
     <div className="pizza-block-wrapper">
@@ -76,7 +71,10 @@ export default function PizzaBlock(props) {
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price"> {props.price[activeSize]} грн</div>
+          <div className="pizza-block__price">
+            {" "}
+            {props.price[activeSize]} грн
+          </div>
           <button
             onClick={onClickAdd}
             className="button button--outline button--add"

@@ -5,10 +5,11 @@ import Search from "./Search/Search";
 
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilters } from "../redux/slices/filterSlice";
+import { selectCart } from "../redux/selectors";
 
 export default function Header() {
   const dispatch = useDispatch();
-  const { items, totalPrice } = useSelector((state) => state.cart);
+  const { items, totalPrice } = useSelector(selectCart);
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 

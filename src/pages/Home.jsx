@@ -17,6 +17,14 @@ import {
 } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
 import { fetchPizzasItems } from "../redux/slices/pizzaSlice.js";
+import {
+  selectIsMounted,
+  selectPizzaItem,
+  selectPizzaStatus,
+  selectSearchValue,
+  selectorCategoryId,
+  selectorSortProperty,
+} from "../redux/selectors.js";
 
 export default function Home() {
   const [order, setOrder] = useState("asc");
@@ -25,13 +33,14 @@ export default function Home() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const categoryId = useSelector((state) => state.filter.categoryId);
-  const sortProperty = useSelector((state) => state.filter.sort.sortProperty);
-  const searchValue = useSelector((state) => state.filter.searchValue);
-  const isMounted = useSelector((state) => state.filter.isMounted);
+  const categoryId = useSelector(selectorCategoryId);
+  const sortProperty = useSelector(selectorSortProperty);
+  const searchValue = useSelector(selectSearchValue);
+  const isMounted = useSelector(selectIsMounted);
 
-  const pizzas = useSelector((state) => state.pizza.items);
-  const status = useSelector((state) => state.pizza.status);
+  const pizzas = useSelector(selectPizzaItem);
+  const status = useSelector(selectPizzaStatus);
+
   console.log(pizzas.length);
 
   const onChangeCategory = (id) => {
@@ -48,7 +57,7 @@ export default function Home() {
         return <PizzaBlock key={uuidv4()} {...pizza} />;
       })
     ) : (
-      <NotFoundItem/>
+      <NotFoundItem />
     );
 
   const isCategory = categoryId > 0 ? `category=${categoryId}` : "";
@@ -128,7 +137,11 @@ export default function Home() {
             <h2>Нажаль виникла помилка.</h2>
           </div>
         ) : (
-          <div className={ pizzas.length ? "content__items": "content__items-notfound"}>
+          <div
+            className={
+              pizzas.length ? "content__items" : "content__items-notfound"
+            }
+          >
             {status === "loading" ? fakeArray : pizzaShow}
           </div>
         )}

@@ -37,6 +37,7 @@ const filterSlice = createSlice({
         sortProperty: "rating",
       };
       state.isMounted = false;
+      state.searchValue = "";
     },
   },
 });
