@@ -4,6 +4,7 @@ import qs from "qs";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort.jsx";
 import PizzaBlock from "../components/PizzaBlock.jsx";
+import NotFoundItem from "../components/notFound/NotFoundItem.jsx";
 import SkeletonPizzaBlock from "../components/skeleton/SkeletonPizzaBlock.jsx";
 import sortList from "../assets/sortList";
 import { v4 as uuidv4 } from "uuid";
@@ -31,6 +32,7 @@ export default function Home() {
 
   const pizzas = useSelector((state) => state.pizza.items);
   const status = useSelector((state) => state.pizza.status);
+  console.log(pizzas.length);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -39,6 +41,15 @@ export default function Home() {
   const fakeArray = [...new Array(6)].map(() => (
     <SkeletonPizzaBlock key={uuidv4()} />
   ));
+
+  const pizzaShow =
+    pizzas.length > 0 ? (
+      pizzas.map((pizza) => {
+        return <PizzaBlock key={uuidv4()} {...pizza} />;
+      })
+    ) : (
+      <NotFoundItem/>
+    );
 
   const isCategory = categoryId > 0 ? `category=${categoryId}` : "";
   const isSearch = searchValue ? `search=${searchValue}` : "";
@@ -117,12 +128,8 @@ export default function Home() {
             <h2>Нажаль виникла помилка.</h2>
           </div>
         ) : (
-          <div className="content__items">
-            {status === "loading"
-              ? fakeArray
-              : pizzas.map((pizza) => {
-                  return <PizzaBlock key={uuidv4()} {...pizza} />;
-                })}
+          <div className={ pizzas.length ? "content__items": "content__items-notfound"}>
+            {status === "loading" ? fakeArray : pizzaShow}
           </div>
         )}
       </div>

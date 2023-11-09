@@ -72,6 +72,11 @@ body {
       display: flex;
       flex-direction: column;
     }
+    &-notfound {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   &__top {
