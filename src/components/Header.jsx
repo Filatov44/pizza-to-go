@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import logoSvg from "../img/pizza-logo.svg";
 import Search from "./Search/Search";
@@ -13,6 +13,8 @@ export default function Header() {
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
+  const location = useLocation();
+
   const onHome = () => {
     dispatch(resetFilters());
   };
@@ -20,7 +22,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
-        <Link className="link" to={"/"} onClick={() => onHome()}>
+        <Link className="link" to={"/"} onClick={onHome}>
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div className="header__text">
@@ -29,7 +31,7 @@ export default function Header() {
             </div>
           </div>
         </Link>
-        <Search />
+        {location.pathname !== "/cart" && <Search />} 
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>{totalPrice} грн</span>

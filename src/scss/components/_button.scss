@@ -46,11 +46,12 @@
   }
 
   &--black {
-    background-color: $black;
+    background-color: lighten($color: $black, $amount: 10);
 
     &:hover,
     &:active {
-      background-color: lighten($color: $black, $amount: 10);
+      background-color: $black;
+      scale: 1.02;
     }
   }
 

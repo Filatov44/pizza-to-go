@@ -41,8 +41,6 @@ export default function Home() {
   const pizzas = useSelector(selectPizzaItem);
   const status = useSelector(selectPizzaStatus);
 
-  console.log(pizzas.length);
-
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
   };
@@ -80,7 +78,6 @@ export default function Home() {
     if (window.location.search) {
       // substring(1) убираем "?" при парсе параметров
       const params = qs.parse(window.location.search.substring(1));
-      console.log(params);
       const sort = sortList.find(
         (obj) => obj.sortProperty === params.sortProperty
       );

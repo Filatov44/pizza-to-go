@@ -5,20 +5,17 @@ import debounce from "lodash.debounce";
 import { GoSearch } from "react-icons/go";
 import { MdClose } from "react-icons/md";
 import { useDispatch } from "react-redux";
-// import { SearchContext } from "../../App";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 
 export default function Search() {
   const [value, setValue] = useState("");
   const inputRef = useRef();
   const dispatch = useDispatch();
-  // const { setSearchValue } = useContext(SearchContext);
 
   const resetInputSearch = () => {
     dispatch(setSearchValue(""));
     setValue("");
     inputRef.current.focus();
-    // setSearchValue("");
   };
 
   const onChangeInput = (event) => {
@@ -29,7 +26,6 @@ export default function Search() {
   const updateSearchValue = useCallback(
     debounce((str) => {
       dispatch(setSearchValue(str));
-      // setSearchValue(str);
     }, 500),
     []
   );

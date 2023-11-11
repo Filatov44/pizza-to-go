@@ -95,7 +95,6 @@ export default function Cart() {
                 strokeLinejoin="round"
               ></path>
             </svg>
-
             <span>Очистить корзину</span>
           </div>
         </div>
