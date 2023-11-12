@@ -9,9 +9,6 @@ export default function NotFoundItem() {
         <p className={styles.text}>
           На жаль піцца з такою назвою не знайдена 😒
         </p>
-        {/* <div className={styles.wrapper_img}>
-          <img className={styles.img} src={pizzaItem} alt="Not found pizza" />
-        </div> */}
         <img className={styles.img} src={pizzaItem} alt="Not found pizza" />
       </div>
     </>
