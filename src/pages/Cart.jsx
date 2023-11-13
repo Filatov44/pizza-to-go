@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/cartItem/CartItem";
 import { clearItems } from "../redux/slices/cartSlice";
-import CartEmpty from "../components/cartEmpty/CartEmpty";
+
 import { selectCart } from "../redux/selectors";
+import CartEmpty from "../components/cartEmpty/CartEmpty";
+import CartTop from "../components/cartTop/CartTop";
+import CartBottom from "../components/cartBottom/CartBottom";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ export default function Cart() {
   return (
     <div className="container container--cart">
       <div className="cart">
-        <div className="cart__top">
+        {/* <div className="cart__top">
           <h2 className="content__title">
             <svg
               width="18"
@@ -97,16 +100,18 @@ export default function Cart() {
             </svg>
             <span>Очистить корзину</span>
           </div>
-        </div>
+        </div> */}
+        <CartTop clearCart={clearCart} />
         <div className="content__items-cart">
           {items.map(
             (item) => item.count > 0 && <CartItem key={item.uId} {...item} />
           )}
         </div>
-        <div className="cart__bottom">
+        <CartBottom totalCount={totalCount} totalPrice={totalPrice} />
+        {/* <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
-              Всего пицц: <b>{totalCount} шт.</b>
+              Загальна кількість: <b>{totalCount} шт.</b>
             </span>
             <span>
               Сумма заказа: <b>{totalPrice} грн</b>
@@ -139,7 +144,7 @@ export default function Cart() {
               <span>Оплатить сейчас</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,0 +1,74 @@
+@import "../../scss/variables";
+.cart__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 320px) and (max-width: 424px) {
+    flex-direction: column;
+  }
+}
+
+.content__title {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+
+  @media (min-width: 320px) and (max-width: 424px) {
+    margin-bottom: 20px;
+  }
+
+  svg {
+    position: relative;
+    top: -2px;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    path {
+      stroke: $black;
+      stroke-width: 1.9;
+    }
+  }
+}
+
+.cart__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  cursor: pointer;
+  border: solid 1px #b6b6b6;
+  border-radius: 10px;
+
+  span,
+  svg,
+  path {
+    transition: all $duration ease-in-out;
+  }
+
+  &:hover {
+    border: solid 1px $orange;
+
+    svg {
+      path {
+        stroke: $orange;
+      }
+    }
+    span {
+      color: $orange;
+    }
+  }
+}
+
+.clear__text {
+  display: inline-block;
+  margin-left: 7px;
+  color: #b6b6b6;
+  font-size: 18px;
+
+  @media (min-width: 425px) and (max-width: 767px) {
+    text-align: center;
+    margin-left: 0px;
+    max-width: 100px;
+  }
+}
