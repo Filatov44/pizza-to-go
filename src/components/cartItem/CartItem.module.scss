@@ -14,10 +14,16 @@
     align-items: center;
   }
 
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   &__img {
     display: flex;
     align-items: center;
-    //   margin-right: 15px;
+
     //   width: 10%;
 
     img {
@@ -25,6 +31,11 @@
       // height: 80px;
       width: 150px;
       height: 150px;
+
+      @media (min-width: 600px) {
+        width: 80px;
+        height: 80px;
+      }
     }
   }
 }
@@ -34,7 +45,9 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  //   width: 40%;
+  @media (min-width: 768px) {
+    min-width: 220px;
+  }
 
   h3 {
     font-weight: bold;
@@ -42,6 +55,11 @@
     line-height: 27px;
     letter-spacing: 0.01em;
     margin-bottom: 10px;
+
+    @media (min-width: 600px) {
+      font-size: 16px;
+      min-width: 150px;
+    }
   }
 
   p {
@@ -57,6 +75,15 @@
   justify-content: center;
   flex-direction: column;
   min-width: 300px;
+
+  @media (min-width: 600px) {
+    min-width: 0px;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .cartInfoCount {
@@ -66,17 +93,30 @@
   min-width: 150px;
   margin-bottom: 10px;
 
+  @media (min-width: 600px) {
+    min-width: 100px;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0px;
+    min-width: 80px;
+  }
+
   &__buttonPlus {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    min-width: 32px;
     padding: 0;
     border: 2px solid #fe5f1e;
     border-radius: 50%;
     background-color: #fff;
+
+    @media (min-width: 600px) {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__buttonMinus {
@@ -85,11 +125,15 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    min-width: 32px;
     padding: 0;
     border: 2px solid #fe5f1e;
     border-radius: 50%;
     background-color: #fff;
+
+    @media (min-width: 600px) {
+      width: 24px;
+      height: 24px;
+    }
 
     svg {
       path:first-of-type {
@@ -99,7 +143,7 @@
   }
 
   &__text {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -109,10 +153,16 @@
   justify-content: center;
   width: 33%;
 
+  @media (min-width: 768px) {
+    margin-left: 15px;
+    min-width: 150px;
+  }
+
   b {
     font-weight: bold;
     font-size: 22px;
     letter-spacing: 0.01em;
+    text-align: center;
   }
 }
 .cartInfoRemove {
@@ -133,6 +183,21 @@
     background-color: $orange;
     color: $white;
 
+    @media (min-width: 600px) {
+      width: 100px;
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    &:hover,
+    :focus {
+      background-color: $black;
+    }
+
     // @media (min-width: 600px) {
     //   width: 200px;
     //   padding: 20px 10px;
@@ -146,9 +211,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
+    width: 24px;
+    height: 24px;
+    // min-width: 32px;
     padding: 0;
     border: 2px solid #d7d7d7;
     border-radius: 50%;
@@ -163,12 +228,17 @@
       display: none;
     }
 
+    @media (min-width: 768px) {
+      display: block;
+    }
+
     &:hover,
     :focus {
-      border: 2px solid $black;
+      border: 2px solid red;
+      background-color: red;
       svg {
         path {
-          fill: $black;
+          fill: $white;
         }
       }
     }
