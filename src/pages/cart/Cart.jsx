@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CartItem from "../components/cartItem/CartItem";
-import { clearItems } from "../redux/slices/cartSlice";
+import CartItem from "../../components/cartItem/CartItem";
+// import styles from './Cart.module.scss';
+import { clearItems } from "../../redux/slices/cartSlice";
 
-import { selectCart } from "../redux/selectors";
-import CartEmpty from "../components/cartEmpty/CartEmpty";
-import CartTop from "../components/cartTop/CartTop";
-import CartBottom from "../components/cartBottom/CartBottom";
+import { selectCart } from "../../redux/selectors";
+import CartEmpty from "../../components/cartEmpty/CartEmpty";
+import CartTop from "../../components/cartTop/CartTop";
+import CartBottom from "../../components/cartBottom/CartBottom";
 
 export default function Cart() {
   const dispatch = useDispatch();
