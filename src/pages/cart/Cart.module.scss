@@ -1,6 +1,12 @@
 @import "../../scss/variables";
 
 .cart {
- max-width: 820px;
-    margin: 90px auto;
+  width: $container-width;
+  max-width: 820px;
+  margin: 0 auto;
+  margin: 90px auto;
+
+   @media (min-width: 320px) {
+       margin: 20px auto;
+    }
 }

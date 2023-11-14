@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import styles from "./Categories.module.scss";
 
 export default function Categories({ value, onChangeCategory }) {
   const categories = [
@@ -11,14 +11,18 @@ export default function Categories({ value, onChangeCategory }) {
   ];
 
   return (
-    <div className="categories">
-      <ul>
+    <div className={styles.categories}>
+      <ul className={styles.categoriesList}>
         {categories.map((category, i) => {
           return (
             <li
               key={category}
               onClick={() => onChangeCategory(i)}
-              className={value === i ? "active" : ""}
+              className={
+                value === i
+                  ? styles.categoriesItemActive
+                  : styles.categoriesItem
+              }
             >
               {category}
             </li>

@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 
 import qs from "qs";
-import Categories from "../components/Categories";
-import Sort from "../components/Sort.jsx";
-import PizzaBlock from "../components/PizzaBlock.jsx";
-import NotFoundItem from "../components/notFound/NotFoundItem.jsx";
-import SkeletonPizzaBlock from "../components/skeleton/SkeletonPizzaBlock.jsx";
-import sortList from "../assets/sortList";
+import Categories from "../../components/categories/Categories.jsx";
+import Sort from "../../components/Sort.jsx";
+import PizzaBlock from "../../components/PizzaBlock.jsx";
+import NotFoundItem from "../../components/notFound/NotFoundItem.jsx";
+import SkeletonPizzaBlock from "../../components/skeleton/SkeletonPizzaBlock.jsx";
+import sortList from "../../assets/sortList.js";
+import styled from "./Home.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,9 +15,9 @@ import {
   setCategoryId,
   setFilters,
   setMounted,
-} from "../redux/slices/filterSlice";
+} from "../../redux/slices/filterSlice.js";
 import { useNavigate } from "react-router-dom";
-import { fetchPizzasItems } from "../redux/slices/pizzaSlice.js";
+import { fetchPizzasItems } from "../../redux/slices/pizzaSlice.js";
 import {
   selectIsMounted,
   selectPizzaItem,
@@ -24,7 +25,7 @@ import {
   selectSearchValue,
   selectorCategoryId,
   selectorSortProperty,
-} from "../redux/selectors.js";
+} from "../../redux/selectors.js";
 
 export default function Home() {
   const [order, setOrder] = useState("asc");
@@ -123,12 +124,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
-        <div className="content__top">
+      <div className={styled.containerHome}>
+        <div className={styled.content__top}>
           <Categories value={categoryId} onChangeCategory={onChangeCategory} />
           <Sort order={order} onChangeOrder={(value) => setOrder(value)} />
         </div>
-        <h2 className="content__title">Все пиццы</h2>
+        <h2 className={styled.content__title}>Піци з обраної категорії</h2>
         {status === "error" ? (
           <div>
             <h2>Нажаль виникла помилка.</h2>
