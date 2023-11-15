@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import sortList from "../assets/sortList";
+import sortList from "../../assets/sortList";
+import styles from "./Sort.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../redux/slices/filterSlice";
-import { selectSort } from "../redux/selectors";
+import { setSort } from "../../redux/slices/filterSlice";
+import { selectSort } from "../../redux/selectors";
 
 export default function Sort({ onChangeOrder, order }) {
   const [open, setOpen] = useState(false);
@@ -34,10 +35,10 @@ export default function Sort({ onChangeOrder, order }) {
   }, []);
 
   return (
-    <div ref={sortRef} className="sort">
-      <div className="sort__label">
+    <div ref={sortRef} className={styles.sort}>
+      <div className={styles.sortLabel}>
         <svg
-          className="sort__label-svg"
+          className={styles.sortLabel__svg}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -49,13 +50,17 @@ export default function Sort({ onChangeOrder, order }) {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортувати за:</b>
-        <span onClick={() => setOpen(!open)}>{sort.name}</span>
-        <div className="sort__button">
+        <b className={styles.sortTitle}>Сортувати за:</b>
+        <span className={styles.sortText} onClick={() => setOpen(!open)}>
+          {sort.name}
+        </span>
+        <div className={styles.sortButtonList}>
           <button
             type="button"
             className={
-              order === "asc" ? "sort__button-item active" : "sort__button-item"
+              order === "asc"
+                ? styles.sortButtonItem__active
+                : styles.sortButtonItem
             }
             onClick={() => onChangeOrder("asc")}
           >
@@ -65,8 +70,8 @@ export default function Sort({ onChangeOrder, order }) {
             type="button"
             className={
               order === "desc"
-                ? "sort__button-item active"
-                : "sort__button-item"
+                ? styles.sortButtonItem__active
+                : styles.sortButtonItem
             }
             onClick={() => onChangeOrder("desc")}
           >
@@ -74,16 +79,20 @@ export default function Sort({ onChangeOrder, order }) {
           </button>
         </div>
       </div>
-      <div className={open ? "active sort__popup" : "sort__popup"}>
+      <div
+        className={open ? styles.sortPopup__active : styles.sortPopup}
+      >
         {open && (
-          <ul>
+          <ul className={styles.sortPopupList}>
             {list.map((obj, i) => {
               return (
                 <li
                   key={uuidv4()}
                   onClick={() => onSelectedSort(obj)}
                   className={
-                    sort.sortProperty === obj.sortProperty ? "active" : ""
+                    sort.sortProperty === obj.sortProperty
+                      ? styles.sortPopupItem__active
+                      : styles.sortPopupItem
                   }
                 >
                   {obj.name}

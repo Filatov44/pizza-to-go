@@ -1,0 +1,111 @@
+@import "../../scss/variables";
+
+.active {
+    opacity: 1;
+  };
+
+.sort {
+  position: relative;
+}
+
+.sortLabel {
+  display: flex;
+  align-items: center;
+
+  &__svg {
+    margin-right: 8px;
+  }
+}
+
+.sortTitle {
+  margin-right: 8px;
+}
+
+.sortText {
+  color: $orange;
+  border-bottom: 1px dashed $orange;
+  cursor: pointer;
+}
+
+.sortButtonList {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.sortButtonItem {
+  display: flex;
+  margin: 0 0 5px 0;
+  text-align: center;
+  align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #fe5f1e;
+  cursor: pointer;
+  background-color: white;
+  color: #fe5f1e;
+
+  &:hover {
+    background-color: #fe5d1ea1;
+
+    color: white;
+  }
+
+  &__active {
+    display: flex;
+    margin: 0 0 5px 0;
+    text-align: center;
+    align-items: center;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #fe5f1e;
+    background-color: #fe5f1e;
+    color: white;
+     cursor: pointer;
+  }
+}
+
+.sortPopup {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px 0;
+  width: 160px;
+
+  &__active {
+    opacity: 1;
+  }
+}
+
+.sortPopupList {
+   position: absolute;
+  right: 0;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 160px;
+}
+
+.sortPopupItem {
+  padding: 12px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(254, 95, 30, 0.05);
+  }
+  &__active {
+    background: rgba(254, 95, 30, 0.05);
+    font-weight: bold;
+    padding: 12px 20px;
+    color: $orange;
+  }
+}

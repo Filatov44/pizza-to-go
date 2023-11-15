@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import qs from "qs";
 import Categories from "../../components/categories/Categories.jsx";
-import Sort from "../../components/Sort.jsx";
+import Sort from "../../components/sort/Sort.jsx";
 import PizzaBlock from "../../components/pizzaBlock/PizzaBlock.jsx";
 import NotFoundItem from "../../components/notFound/NotFoundItem.jsx";
 import SkeletonPizzaBlock from "../../components/skeleton/SkeletonPizzaBlock.jsx";
