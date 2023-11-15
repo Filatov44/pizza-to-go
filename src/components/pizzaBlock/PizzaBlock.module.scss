@@ -1,0 +1,141 @@
+@import "../../scss/variables";
+@import "../../scss/libs/normalize";
+
+.pizzaBlockWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pizzaBlock {
+  width: 280px;
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.pizzaBlockImg {
+  width: 260px;
+}
+
+.pizzaBlockTitle {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1%;
+  margin-bottom: 20px;
+}
+
+.pizzaBlockSelector {
+  display: flex;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.pizzaBlockList {
+  display: flex;
+  flex: 1;
+
+  &:first-of-type {
+    margin-bottom: 6px;
+  }
+}
+
+.pizzaBlockItem {
+  padding: 8px;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  @include noselect();
+}
+
+.pizzaBlockItemActive {
+  padding: 8px;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  @include noselect();
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  cursor: auto;
+}
+
+.pizzaBlockBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pizzaBlockPrice {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.015em;
+}
+
+.pizzaBlockButton {
+  display: inline-block;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  color: #fe5f1e;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-color: #fe5f1e;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #f24701;
+    color: #fff;
+    & svg {
+      path {
+        fill: #fff;
+      }
+    }
+    & span {
+      color: #fff;
+    }
+    & i {
+      background-color: #fff;
+      color: #fe5f1e;
+    }
+  }
+
+  & svg {
+    margin-right: 2px;
+    transition: all 0.15s ease-in-out;
+    path {
+      fill: #fe5f1e;
+    }
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fe5f1e;
+  }
+  &__count {
+    display: inline-block;
+    border-radius: 30px;
+    background-color: #fe5f1e;
+    color: #fff;
+    font-weight: 600;
+    width: 22px;
+    height: 22px;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 22px;
+    position: relative;
+    top: -1px;
+    left: 3px;
+  }
+}

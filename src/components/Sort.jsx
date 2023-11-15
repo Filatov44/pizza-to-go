@@ -49,7 +49,7 @@ export default function Sort({ onChangeOrder, order }) {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
+        <b>Сортувати за:</b>
         <span onClick={() => setOpen(!open)}>{sort.name}</span>
         <div className="sort__button">
           <button

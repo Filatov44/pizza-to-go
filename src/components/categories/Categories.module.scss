@@ -35,6 +35,15 @@
     grid-column-gap: 10px;
     grid-row-gap: 10px;
   }
+
+   @media (min-width: 320px) {
+     grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  @media (min-width: 425px) {
+     grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
 }
 
 .categoriesItem {
@@ -49,7 +58,8 @@
   @include noselect();
 
   @media (max-width: 500px) {
-    padding: 8px 15px;
+    padding: 8px 8px;
+    width: 125px;
   }
 
   &:hover {
@@ -79,6 +89,7 @@
   @include noselect();
 
   @media (max-width: 500px) {
-    padding: 8px 15px;
+    padding: 8px 8px;
+    width: 125px;
   }
 }

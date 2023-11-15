@@ -2,12 +2,12 @@ import styles from "./Categories.module.scss";
 
 export default function Categories({ value, onChangeCategory }) {
   const categories = [
-    "Все",
-    "Мясные",
-    "Вегитарианские",
+    "Всі",
+    "М'ясні",
+    "Вегітаріанські",
     "Гриль",
-    "Острые",
-    "Закрытые",
+    "Гострі",
+    "Закриті",
   ];
 
   return (

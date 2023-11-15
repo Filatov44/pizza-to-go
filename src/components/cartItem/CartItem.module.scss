@@ -24,11 +24,7 @@
     display: flex;
     align-items: center;
 
-    //   width: 10%;
-
     img {
-      // width: 80px;
-      // height: 80px;
       width: 150px;
       height: 150px;
 
@@ -99,7 +95,6 @@
 
   @media (min-width: 768px) {
     margin-bottom: 0px;
-    min-width: 80px;
   }
 
   &__buttonPlus {
@@ -197,14 +192,6 @@
     :focus {
       background-color: $black;
     }
-
-    // @media (min-width: 600px) {
-    //   width: 200px;
-    //   padding: 20px 10px;
-    // }
-    // @media (min-width: 768px) {
-    //   width: 250px;
-    // }
   }
 
   &__buttonSvg {
@@ -213,7 +200,6 @@
     justify-content: center;
     width: 24px;
     height: 24px;
-    // min-width: 32px;
     padding: 0;
     border: 2px solid #d7d7d7;
     border-radius: 50%;
@@ -244,54 +230,3 @@
     }
   }
 }
-
-//   &-count {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   width: 13%;
-
-//   &-minus {
-//     svg {
-//       path:first-of-type {
-//         display: none;
-//       }
-//     }
-//   }
-
-//   b {
-//     font-size: 22px;
-//   }
-// }
-//  &-price {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 33%;
-
-//   b {
-//     font-weight: bold;
-//     font-size: 22px;
-//     letter-spacing: 0.01em;
-//   }
-// }
-
-// &-remove {
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-//   width: 4%;
-//   .button {
-//     border-color: darken($color: $gray-line, $amount: 10);
-//   }
-
-//   svg {
-//     transform: rotate(45deg);
-
-//     path {
-//       fill: darken($color: $gray-line, $amount: 15);
-//     }
-//   }
-// }
-
-// }

@@ -47,7 +47,7 @@
   }
 
   &:hover {
-    border: solid 1px $orange;
+    border: solid 2px $orange;
 
     svg {
       path {
@@ -70,6 +70,5 @@
     text-align: center;
     margin-left: 0px;
     font-size: 16px;
-    // max-width: 100px;
   }
 }

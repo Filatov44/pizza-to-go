@@ -1,7 +1,7 @@
 const list = [
-  { name: "популярности", sortProperty: "rating" },
-  { name: "цене", sortProperty: "price" },
-  { name: "алфавиту", sortProperty: "title" },
+  { name: "популярністю", sortProperty: "rating" },
+  { name: "ціною", sortProperty: "price" },
+  { name: "алфавітом", sortProperty: "title" },
 ];
 
 export default list

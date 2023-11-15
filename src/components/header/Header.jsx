@@ -1,11 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 
-import logoSvg from "../img/pizza-logo.svg";
-import Search from "./Search/Search";
+import logoSvg from "../../img/pizza-logo.svg";
+import Search from "../Search/Search";
+import styles from "./Header.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilters } from "../redux/slices/filterSlice";
-import { selectCart } from "../redux/selectors";
+import { resetFilters } from "../../redux/slices/filterSlice";
+import { selectCart } from "../../redux/selectors";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -20,22 +21,24 @@ export default function Header() {
   };
 
   return (
-    <header className="header">
-      <div className="container">
-        <Link className="link" to={"/"} onClick={onHome}>
-          <div className="header__logo">
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <Link className={styles.headerLink} to={"/"} onClick={onHome}>
+          <div className={styles.headerLogo}>
             <img width="38" src={logoSvg} alt="Pizza logo" />
-            <div className="header__text">
-              <h1 className="header__name">Pizza to Go</h1>
-              <p>Минимум ожидания, максимум еды.</p>
+            <div className={styles.headerText}>
+              <h1 className={styles.headerName}>Pizza to Go</h1>
+              <p>З піцею життя смачніше</p>
             </div>
           </div>
         </Link>
-        {location.pathname !== "/cart" && <Search />} 
+        {location.pathname !== "/cart" && <Search />}
         <div className="header__cart">
-          <Link to="/cart" className="button button--cart">
-            <span>{totalPrice} грн</span>
-            <div className="button__delimiter"></div>
+          <Link to="/cart" className={styles.headerButtonCart}>
+            <span className={styles.headerButtonCart__text}>
+              {totalPrice} грн
+            </span>
+            <div className={styles.headerButtonCart__delimiter}></div>
             <svg
               width="18"
               height="18"
@@ -65,7 +68,7 @@ export default function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>{totalCount}</span>
+            <span className={styles.headerButtonCart__text}>{totalCount}</span>
           </Link>
         </div>
       </div>

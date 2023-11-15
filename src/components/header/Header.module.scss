@@ -1,0 +1,115 @@
+@import "../../scss/variables";
+
+.header {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+
+  @media (max-width: 500px) {
+    padding: 15px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.headerLink {
+  &:hover,
+  :focus {
+    h1 {
+      color: #fe5f1e;
+    }
+  }
+}
+
+.headerLogo {
+  display: flex;
+
+  @media (max-width: 499px) {
+    margin-bottom: 15px;
+  }
+   @media (min-width: 500px) {
+    margin-bottom: 25px;
+  }
+   @media (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+
+  img {
+    margin-right: 15px;
+  }
+
+  h1 {
+    letter-spacing: 1%;
+  }
+
+  p {
+    color: #7b7b7b;
+  }
+}
+
+.headerText {
+  @media (max-width: 500px) {
+    text-align: center;
+  }
+}
+
+.headerName {
+  color: #181818;
+  font-size: 24px;
+  letter-spacing: 1%;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.headerButtonCart {
+  display: flex;
+  align-items: center;
+  line-height: 23px;
+  padding: 12px 25px;
+  background-color: #fe5f1e;
+  color: #fff;
+  border-radius: 30px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($orange, 7%);
+    transform: translateY(1px);
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.15s ease-in-out;
+  }
+
+  &__delimiter {
+    width: 1px;
+    height: 25px;
+    // background-color: rgba(255, 255, 255, 0.25);
+    background-color: $white;
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  svg {
+    margin-right: 8px;
+    margin-bottom: 1px;
+  }
+}

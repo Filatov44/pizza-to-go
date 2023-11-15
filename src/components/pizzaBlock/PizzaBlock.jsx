@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./PizzaBlock.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../redux/slices/cartSlice";
+import { addItem } from "../../redux/slices/cartSlice";
 
-const typeName = ["тонкое", "традиционное"];
+const typeName = ["тонке", "традиційне"];
 
 export default function PizzaBlock(props) {
   const dispatch = useDispatch();
@@ -38,31 +39,43 @@ export default function PizzaBlock(props) {
   };
 
   return (
-    <div className="pizza-block-wrapper">
-      <div className="pizza-block">
-        <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{props.title}</h4>
-        <div className="pizza-block__selector">
-          <ul>
+    <div className={styles.pizzaBlockWrapper}>
+      <div className={styles.pizzaBlock}>
+        <img
+          className={styles.pizzaBlockImg}
+          src={props.imageUrl}
+          alt="Pizza"
+        />
+        <h4 className={styles.pizzaBlockTitle}>{props.title}</h4>
+        <div className={styles.pizzaBlockSelector}>
+          <ul className={styles.pizzaBlockList}>
             {props.types.map((type, i) => {
               return (
                 <li
                   key={uuidv4()}
                   onClick={() => setTypeActive(type)}
-                  className={typeActive === i ? "active" : ""}
+                  className={
+                    typeActive === i
+                      ? styles.pizzaBlockItemActive
+                      : styles.pizzaBlockItem
+                  }
                 >
                   {typeName[type]}
                 </li>
               );
             })}
           </ul>
-          <ul>
+          <ul className={styles.pizzaBlockList}>
             {props.sizes.map((size, i) => {
               return (
                 <li
                   key={uuidv4()}
                   onClick={() => setActiveSize(i)}
-                  className={activeSize === i ? "active" : ""}
+                  className={
+                    activeSize === i
+                      ? styles.pizzaBlockItemActive
+                      : styles.pizzaBlockItem
+                  }
                 >
                   {size}
                 </li>
@@ -75,10 +88,7 @@ export default function PizzaBlock(props) {
             {" "}
             {props.price[activeSize]} грн
           </div>
-          <button
-            onClick={onClickAdd}
-            className="button button--outline button--add"
-          >
+          <button onClick={onClickAdd} className={styles.pizzaBlockButton}>
             <svg
               width="12"
               height="12"
@@ -91,8 +101,10 @@ export default function PizzaBlock(props) {
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
-            {addedCount > 0 && <i>{addedCount}</i>}
+            <span className={styles.pizzaBlockButton__text}>Добавить</span>
+            {addedCount > 0 && (
+              <i className={styles.pizzaBlockButton__count}>{addedCount}</i>
+            )}
           </button>
         </div>
       </div>
