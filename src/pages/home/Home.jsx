@@ -137,7 +137,7 @@ export default function Home() {
         ) : (
           <div
             className={
-              pizzas.length ? "content__items" : "content__items-notfound"
+              pizzas.length ? styled.contentItems : ""
             }
           >
             {status === "loading" ? fakeArray : pizzaShow}

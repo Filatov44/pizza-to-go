@@ -101,7 +101,7 @@ export default function PizzaBlock(props) {
                 fill="white"
               />
             </svg>
-            <span className={styles.pizzaBlockButton__text}>Добавить</span>
+            <span className={styles.pizzaBlockButton__text}>Додати</span>
             {addedCount > 0 && (
               <i className={styles.pizzaBlockButton__count}>{addedCount}</i>
             )}

@@ -127,6 +127,9 @@
         color: $black;
       }
     }
+    &:active {
+      transform: translateY(1px);
+    }
   }
 
   &__backButtonText {
@@ -141,6 +144,7 @@
     padding: 10px 10px;
     border-radius: 30px;
     background-color: $orange;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 
     @media (min-width: 600px) {
       width: 200px;
@@ -149,10 +153,20 @@
     @media (min-width: 768px) {
       width: 250px;
     }
+
+    &:hover, &:focus {
+      background-color: #f74901;
+    }
+
+    &:active {
+          background-color: #f74901;
+    transform: translateY(1px);
+    }
   }
 
   &__payButtonText {
     color: $white;
+
   }
 }
 

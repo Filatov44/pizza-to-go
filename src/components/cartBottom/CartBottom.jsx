@@ -36,9 +36,9 @@ export default function CartBottom({ totalCount, totalPrice }) {
             ></path>
           </svg>
         </Link>
-        <div className={styled.cartBottom__payButton}>
-          <span className={styled.cartBottom__payButtonText}>Оплатити зараз</span>
-        </div>
+        <Link className={styled.cartBottom__payButton}>
+          <div className={styled.cartBottom__payButtonText}>Оплатити зараз</div>
+        </Link>
       </div>
     </div>
   );
