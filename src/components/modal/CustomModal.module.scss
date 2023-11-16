@@ -1,0 +1,113 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 10px 40px 10px;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modalOverlay::before,
+.modalOverlay::after {
+  content: "";
+  display: block;
+  height: 1px;
+  flex-grow: 1;
+}
+
+.modalContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 40.625rem;
+  padding: 60px 20px 50px 20px;
+  background-color: #fff;
+  border-radius: 30px;
+  filter: drop-shadow(0 0 10px rgba(255, 103, 0, 0.7));
+  transform: translateY(50px);
+  transition: transform 0.3s;
+}
+
+.ReactModal__Content--after-open {
+  transform: translateY(0);
+}
+
+.ReactModal__Content--before-close {
+  transform: translateY(50px);
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 20px;
+  right: 26px;
+  width: 30px;
+  height: 30px;
+  stroke: #a4a4a4;
+  transition: stroke 0.3s;
+&:hover {
+    stroke: #ff0000;
+}
+
+}
+
+// .modal-close-button:hover {
+//   stroke: #ff0000;
+// }
+
+.modalContent h2 {
+  margin-bottom: 18px;
+  font-size: 36px;
+  color: #ff6700;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 33px;
+  font-size: 24px;
+  color: #2e2e2e;
+  text-align: center;
+}
+
+.modal-content img {
+  display: block;
+  margin-bottom: 45px;
+  width: 210px;
+}
+
+.modalSubmitButton {
+  width: 180px;
+  height: 48px;
+  background-color: #ff6700;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  filter: drop-shadow(0 0 7px rgba(255, 103, 0, 0.3));
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #c24e00;
+  }
+}
+
+// .modalSubmitButton:hover {
+//   background-color: #c24e00;
+// }

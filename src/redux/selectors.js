@@ -1,4 +1,5 @@
 export const selectCart = (state) => state.cart;
+export const selectCartItem = (state) => state.cart.items;
 
 export const selectSort = (state) => state.filter.sort;
 export const selectorCategoryId = (state) => state.filter.categoryId;
