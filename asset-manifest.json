@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pizza-to-go/static/css/main.5febf19f.css",
-    "main.js": "/pizza-to-go/static/js/main.358c7fc0.js",
+    "main.css": "/pizza-to-go/static/css/main.27f69a52.css",
+    "main.js": "/pizza-to-go/static/js/main.5e54c822.js",
     "static/media/empty-cart.png": "/pizza-to-go/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/pizzaItemNotFound.jpg": "/pizza-to-go/static/media/pizzaItemNotFound.1cfd0790bc1b9868ac02.jpg",
     "static/media/pizza-logo.svg": "/pizza-to-go/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/pizza-to-go/index.html",
-    "main.5febf19f.css.map": "/pizza-to-go/static/css/main.5febf19f.css.map",
-    "main.358c7fc0.js.map": "/pizza-to-go/static/js/main.358c7fc0.js.map"
+    "main.27f69a52.css.map": "/pizza-to-go/static/css/main.27f69a52.css.map",
+    "main.5e54c822.js.map": "/pizza-to-go/static/js/main.5e54c822.js.map"
   },
   "entrypoints": [
-    "static/css/main.5febf19f.css",
-    "static/js/main.358c7fc0.js"
+    "static/css/main.27f69a52.css",
+    "static/js/main.5e54c822.js"
   ]
 }
