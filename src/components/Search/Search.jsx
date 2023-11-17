@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styles from "../Search/Search.module.scss";
 
 import debounce from "lodash.debounce";
@@ -38,7 +38,7 @@ export default function Search() {
         value={value}
         onChange={onChangeInput}
         className={styles.input}
-        placeholder="Поиск пиццы..."
+        placeholder="Пошук піци..."
       />
       {value && (
         <MdClose onClick={resetInputSearch} className={styles.input__reset} />

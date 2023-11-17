@@ -15,7 +15,7 @@ const CartEmpty = () => {
   return (
     <>
       <div className={styled.cart}>
-        <h2 className={styled.cart_title}>Корзина порожня</h2>
+        <h2 className={styled.cart_title}>Кошик порожній</h2>
         <p className={styled.cart__text}>😕</p>
         <p className={styled.cart__text}>
           Найімовірніше, ви не замовляли ще піцу.
