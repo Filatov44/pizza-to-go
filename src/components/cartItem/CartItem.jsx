@@ -38,22 +38,11 @@ const CartItem = ({
     );
   };
 
-  // const removePizza = () => {
-  //   if (window.confirm("Ви дійсно бажаєте видалити ?")) {
-  //   dispatch(
-  //     removeItems({
-  //       uId,
-  //     })
-  //   );
-
-  //   }
-  // };
-
   return (
     <>
       <div className={styles.cartItem}>
         <div className={styles.cartItem__img}>
-          <img  src={imageUrl} alt="Pizza" />
+          <img src={imageUrl} alt="Pizza" />
         </div>
         <div className={styles.cartInfo}>
           <h3>{title}</h3>

@@ -1,0 +1,16 @@
+.modal__title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #ff6700;
+  text-align: center;
+}
+
+.modal__img {
+  display: block;
+  width: 210px;
+  margin-bottom: 25px;
+
+  @media (min-width: 768px) {
+    width: 300px;
+  }
+}
