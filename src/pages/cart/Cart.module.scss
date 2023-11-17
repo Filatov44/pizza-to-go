@@ -6,7 +6,12 @@
   margin: 0 auto;
   margin: 90px auto;
 
-   @media (min-width: 320px) {
-       margin: 20px auto;
-    }
+  @media (min-width: 320px) {
+    margin: 20px auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
 }

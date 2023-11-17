@@ -55,21 +55,32 @@
   transform: translateY(50px);
 }
 
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
 .modal-close-button {
   position: absolute;
   top: 20px;
-  right: 26px;
-  width: 30px;
-  height: 30px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
   stroke: #a4a4a4;
-  transition: stroke 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: none;
+  /* padding: 10px; */
+  transition: stroke 0.3s ease-in-out, scale 0.3s ease-in-out ;
 }
 
 .modal-close-button:hover {
   stroke: #ff0000;
+  scale: 1.1;
 }
 
-.modal-content h2 {
+/* .modal-content h2 {
   margin-bottom: 18px;
   font-size: 36px;
   color: #ff6700;
@@ -87,19 +98,49 @@
   display: block;
   margin-bottom: 45px;
   width: 210px;
+} */
+.modal-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 280px;
+  margin-top: 25px;
 }
 
-.modal-submit-button {
-  width: 180px;
-  height: 48px;
-  background-color: #ff6700;
-  border-radius: 8px;
+.modal-btn-submit {
+  min-width: 80px;
+  min-height: 36px;
+  background-color: #056e17;
+  border: 1px solid #056e17;
+  border-radius: 15px;
   font-size: 18px;
   color: #fff;
   filter: drop-shadow(0 0 7px rgba(255, 103, 0, 0.3));
-  transition: background-color 0.3s;
+  transition: scale 0.3s;
 }
 
-.modal-submit-button:hover {
-  background-color: #c24e00;
+.modal-btn-submit:hover {
+  scale: 1.05;
+}
+
+
+.modal-btn-cancel {
+  min-width: 80px;
+  min-height: 36px;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 15px;
+  font-size: 18px;
+  color: #fff;
+  filter: drop-shadow(0 0 7px rgba(255, 103, 0, 0.3));
+  transition: scale 0.3s;
+}
+
+.modal-btn-cancel:hover {
+  scale: 1.05;
+}
+
+.cancelModalBtn {
+  height: 50px;
+  width: 50px;
 }

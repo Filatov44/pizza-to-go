@@ -1,0 +1,67 @@
+@import "../../scss/variables";
+
+.modal__title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #ff6700;
+  text-align: center;
+}
+
+.modal__img {
+  display: block;
+  width: 210px;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: $black;
+  text-align: center;
+}
+
+.sub__title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: $black;
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 200px;
+
+  @media (min-width: 320px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 400px;
+  }
+
+  &__count {
+    font-size: 16px;
+    color: $black;
+    text-align: center;
+
+    @media (min-width: 320px) {
+    margin-bottom: 5px;
+  }
+  @media (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+  }
+  &__price {
+    font-size: 16px;
+    color: #fe5f1e;
+    text-align: center;
+  }
+}

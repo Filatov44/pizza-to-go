@@ -25,16 +25,18 @@ export default function CustomModal({
         <CloseIcon />
       </button>
       {children}
-      {submitBtn && (
-        <button className="modal-submit-button" onClick={() => onDelete()}>
-          {submitBtn}
-        </button>
-      )}
-      {cancelBtn && (
-        <button className="modal-submit-button" onClick={() => onCancel()}>
-          {cancelBtn}
-        </button>
-      )}
+      <div className="modal-btn-wrapper">
+        {submitBtn && (
+          <button className="modal-btn-submit" onClick={() => onDelete()}>
+            {submitBtn}
+          </button>
+        )}
+        {cancelBtn && (
+          <button className="modal-btn-cancel" onClick={() => onCancel()}>
+            {cancelBtn}
+          </button>
+        )}
+      </div>
     </Modal>
   );
 }

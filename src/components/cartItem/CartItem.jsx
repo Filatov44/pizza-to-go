@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./CartItem.module.scss";
 import { useDispatch } from "react-redux";
-import { addItem, minusItem, removeItems } from "../../redux/slices/cartSlice";
-
+import { addItem, minusItem } from "../../redux/slices/cartSlice";
 
 const CartItem = ({
   id,
@@ -13,17 +12,9 @@ const CartItem = ({
   price,
   count,
   imageUrl,
-  onChange
+  onChange,
 }) => {
   const dispatch = useDispatch();
-
-  // const activeChange = (uId) => {
-  //   setItemId(uId);
-  // };
-
-  // const openModal = () => {
-  //   isOpen(true);
-  // };
 
   const setItemId = (uId) => {
     onChange(uId);
@@ -62,7 +53,7 @@ const CartItem = ({
     <>
       <div className={styles.cartItem}>
         <div className={styles.cartItem__img}>
-          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+          <img  src={imageUrl} alt="Pizza" />
         </div>
         <div className={styles.cartInfo}>
           <h3>{title}</h3>
@@ -75,7 +66,6 @@ const CartItem = ({
             <button
               className={styles.cartInfoCount__buttonMinus}
               onClick={minusPizza}
-              // className="button button--outline button--circle cart__item-count-minus"
             >
               <svg
                 width="10"
@@ -98,7 +88,6 @@ const CartItem = ({
             <button
               className={styles.cartInfoCount__buttonPlus}
               onClick={addPizza}
-              // className="button button--outline button--circle cart__item-count-plus"
             >
               <svg
                 width="10"
@@ -131,7 +120,6 @@ const CartItem = ({
             <button
               className={styles.cartInfoRemove__buttonSvg}
               onClick={() => setItemId(uId)}
-              // className="button button--outline button--circle"
             >
               <svg
                 width="10"
@@ -150,7 +138,6 @@ const CartItem = ({
                 ></path>
               </svg>
             </button>
-            {/* <button onClick={setOpen(true)}>Modal</button> */}
           </div>
         </div>
       </div>

@@ -32,21 +32,6 @@
   flex-grow: 1;
 }
 
-.modalContent {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 40.625rem;
-  padding: 60px 20px 50px 20px;
-  background-color: #fff;
-  border-radius: 30px;
-  filter: drop-shadow(0 0 10px rgba(255, 103, 0, 0.7));
-  transform: translateY(50px);
-  transition: transform 0.3s;
-}
-
 .ReactModal__Content--after-open {
   transform: translateY(0);
 }
@@ -63,34 +48,9 @@
   height: 30px;
   stroke: #a4a4a4;
   transition: stroke 0.3s;
-&:hover {
+  &:hover {
     stroke: #ff0000;
-}
-
-}
-
-// .modal-close-button:hover {
-//   stroke: #ff0000;
-// }
-
-.modalContent h2 {
-  margin-bottom: 18px;
-  font-size: 36px;
-  color: #ff6700;
-  text-align: center;
-}
-
-.modal-content p {
-  margin-bottom: 33px;
-  font-size: 24px;
-  color: #2e2e2e;
-  text-align: center;
-}
-
-.modal-content img {
-  display: block;
-  margin-bottom: 45px;
-  width: 210px;
+  }
 }
 
 .modalSubmitButton {
@@ -108,6 +68,3 @@
   }
 }
 
-// .modalSubmitButton:hover {
-//   background-color: #c24e00;
-// }

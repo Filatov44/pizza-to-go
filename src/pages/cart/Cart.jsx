@@ -1,33 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../../components/cartItem/CartItem";
-import styles from "./Cart.module.scss";
-import { clearItems, removeItems } from "../../redux/slices/cartSlice";
-
-import { selectCart, selectCartItem } from "../../redux/selectors";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
 import CartTop from "../../components/cartTop/CartTop";
 import CartBottom from "../../components/cartBottom/CartBottom";
 import CustomModal from "../../components/modal/CustomModal";
+import DeleteModalItems from "../../components/deleteModalItem/DeleteModalItems";
+import styles from "./Cart.module.scss";
+import { clearItems, removeItems } from "../../redux/slices/cartSlice";
+
+import { selectCart, selectCartItem } from "../../redux/selectors";
 
 export default function Cart() {
- const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [delItm, setDelItm] = useState("");
-  console.log(delItm);
-
 
   const setDelete = (uId) => {
-    setDelItm(uId)
-    setOpen(true)
-  }
-  
+    setDelItm(uId);
+    setOpen(true);
+  };
 
   const dispatch = useDispatch();
   const { totalPrice, items } = useSelector(selectCart);
   const deleteItem = useSelector(selectCartItem).find(
-        (obj) => obj.uId === delItm)
-  
-  console.log(deleteItem);
+    (obj) => obj.uId === delItm
+  );
 
   const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
@@ -37,18 +34,10 @@ export default function Cart() {
     }
   };
 
-   const removePizza = () => {
-     // if (window.confirm("Ви дійсно бажаєте видалити ?")) {
-     setOpen(false);
-     dispatch(
-       removeItems(
-         deleteItem
-       )
-     );
-     console.log(2);
-       
-     // }
-   };
+  const removePizza = () => {
+    setOpen(false);
+    dispatch(removeItems(deleteItem));
+  };
 
   if (!totalPrice) {
     return <CartEmpty />;
@@ -57,16 +46,11 @@ export default function Cart() {
   return (
     <div className={styles.cart}>
       <CartTop clearCart={clearCart} />
-      <div className="content__items-cart">
+      <div className={styles.card__content}>
         {items.map(
           (item) =>
             item.count > 0 && (
-              <CartItem
-                key={item.uId}
-                {...item}
-                onChange={setDelete}
-                
-              />
+              <CartItem key={item.uId} {...item} onChange={setDelete} />
             )
         )}
       </div>
@@ -78,20 +62,9 @@ export default function Cart() {
           onCancel={() => setOpen(false)}
           onDelete={removePizza}
           submitBtn="Так"
-          cancelBtn="Hi"
+          cancelBtn="Ні"
         >
-          <>
-            <div>Ви дійсно бажаєте видалити цю позицію?</div>
-            <img
-              className="pizza-block__image"
-              src={deleteItem.imageUrl}
-              alt="Pizza"
-            />
-            <h3>{deleteItem.title}</h3>
-            <p>
-              {deleteItem.type}, {deleteItem.size} см.
-            </p>
-          </>
+          <DeleteModalItems {...deleteItem} />
         </CustomModal>
       )}
     </div>
